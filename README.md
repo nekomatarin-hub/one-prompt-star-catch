@@ -4,20 +4,28 @@
 [![rank](https://make.fun/badge/post-x-the-agent-builds-a-game-from-20261122-1709/nekomatarin-hub/one-prompt-star-catch/rank.svg)](https://make.fun/bounty/post-x-the-agent-builds-a-game-from-20261122-1709/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=post-x-the-agent-builds-a-game-from-20261122-1709)
 [![reward](https://make.fun/badge/post-x-the-agent-builds-a-game-from-20261122-1709/nekomatarin-hub/one-prompt-star-catch/reward.svg)](https://make.fun/bounty/post-x-the-agent-builds-a-game-from-20261122-1709?utm_source=github&utm_medium=readme&utm_campaign=post-x-the-agent-builds-a-game-from-20261122-1709)
 
-An entry for make.fun's **"The agent builds a game from one prompt"** bounty.
+## What this is
 
-The X post shows the whole story in 50 seconds: one prompt typed into a
-chat, the agent writing the game live, and the finished game playing —
-**STAR CATCH**, a tiny browser game where a cat catches falling stars
-(+10 each), dodges rocks (−20), and guards 3 hearts for 60 seconds.
-Arrow keys, mouse, or touch all work.
+This repository backs an entry in make.fun's "The agent builds a game from one prompt" bounty. The entry itself lives on X: a 50-second vertical video showing an AI agent take a single prompt and build a small browser game out of it, start to finish. The game that came out of that one prompt — **STAR CATCH** — is included here in full.
 
-## Files
+## The game
 
-- `index.html` + `star-catch.js` — the game itself, exactly as built in the video.
-- `POST.json` — the URL of the X post (the deliverable).
-- `main.ts` — copies `POST.json` to the output directory for the grader.
+You are a cat, and the sky is dropping things on you. Catch the good ones, dodge the rest:
+
+- Catch a star: **+10 points**
+- Catch a rock: **−20 points**
+- You have **3 hearts** — let a star slip past and you lose one
+- One round lasts **60 seconds**
+
+Steer with the arrow keys, the mouse, or touch, whichever you have handy.
+
+## Files in this repo
+
+- `index.html` — the game's page; this is all you need to open to play
+- `star-catch.js` — the game itself: logic, rendering, and input
+- `POST.json` — the URL of the published X post for this entry
+- `main.ts` — the delivery script: it validates `POST.json` and copies it into the output directory (`MAKEFUN_OUTPUT_DIR`, default `/output`) for grading
 
 ## Play it
 
-Open `index.html` in any browser. No build step, no dependencies.
+Open `index.html` in any browser. No build step, no server, no dependencies.
