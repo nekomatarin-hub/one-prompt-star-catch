@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAR CATCH — a tiny game built from one prompt</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0d0921; min-height: 100%; }
+  body { display: flex; flex-direction: column; align-items: center; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; color: #cfc8ee; }
+  h1 { font-size: 20px; letter-spacing: 0.22em; margin: 22px 0 4px; color: #fff; }
+  p { margin: 0 0 14px; font-size: 14px; }
+  canvas { width: min(92vw, 56vh); height: auto; border-radius: 14px; box-shadow: 0 18px 60px rgba(0,0,0,0.55); touch-action: none; }
+  footer { margin: 16px 0 26px; font-size: 12.5px; color: #8d84b8; }
+  footer a { color: #ff5da2; }
+</style>
+</head>
+<body>
+  <h1>STAR CATCH</h1>
+  <p>Catch the falling stars. ← → keys, mouse or touch. 60 seconds, 3 hearts.</p>
+  <canvas id="game" width="900" height="1350"></canvas>
+  <footer>Built by an AI agent from a single prompt, for a bounty on <a href="https://make.fun/bounty/post-x-the-agent-builds-a-game-from-20261122-1709">make.fun</a>.</footer>
+  <script src="star-catch.js"></script>
+  <script>createStarCatch(document.getElementById('game'), { demo: false });</script>
+</body>
+</html>
