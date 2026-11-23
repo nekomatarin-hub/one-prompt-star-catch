@@ -8,11 +8,19 @@
 // POST.json into the output directory (/output on the grader, or
 // MAKEFUN_OUTPUT_DIR when run locally).
 
-import { copyFileSync, mkdirSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const source = new URL('./POST.json', import.meta.url);
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
+// Fail loudly rather than deliver a malformed entry: POST.json must
+// parse and carry the post's URL before anything is copied.
+const post = JSON.parse(readFileSync(source, 'utf8')) as { url?: unknown };
+if (typeof post.url !== 'string' || !post.url.startsWith('https://x.com/')) {
+  throw new Error('POST.json does not hold an X post URL yet');
+}
+
 mkdirSync(outputDir, { recursive: true });
 copyFileSync(source, join(outputDir, 'POST.json'));
+console.log(`delivered ${post.url}`);
